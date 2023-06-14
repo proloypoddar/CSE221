@@ -26,6 +26,10 @@ def marge(x):
         j+=1
     return x
 x=[]
+i=int(input())
+for i in range(0,i):
+    i=int(input())
+    x.append(i)
 
 print(marge(x))
 
