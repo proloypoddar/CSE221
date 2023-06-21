@@ -7,7 +7,6 @@ for _ in range(N):
     departure_time = train_info[1].split(" at ")[1]
     trains.append((train_name, departure_time))
 file.close()
-# Bubble Sort Algorithm
 for i in range(N-1):
     for j in range(N-i-1):
         if trains[j][0] > trains[j+1][0] or (trains[j][0] == trains[j+1][0] and trains[j][1] < trains[j+1][1]):
