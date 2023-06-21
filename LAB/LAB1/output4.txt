@@ -1,0 +1,13 @@
+ABC will departure for 17:30
+ABC will departure for 03:00
+ABC will departure for 03:00
+ABCD will departure for 01:00
+ABCD will departure for 00:30
+ABCE will departure for 23:05
+DhumketuExpress will departure for 02:30
+PadmaExpress will departure for 20:30
+PadmaExpress will departure for 19:30
+ShonarBangla will departure for 12:30
+SubornoExpress will departure for 14:30
+SubornoExpress will departure for 14:30
+SubornoExpress will departure for 11:30

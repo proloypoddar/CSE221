@@ -1,1 +1,3 @@
-1,2,5,8,7,9
+a="calculate 3 / 10"
+x=a.split()
+print(x[2])
