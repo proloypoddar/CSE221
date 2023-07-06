@@ -14,24 +14,24 @@ def merge_sort(arr):
 
 def merge(left, right):
     merged = []
-    left_index = 0
-    right_index = 0
+    l = 0
+    r = 0
 
-    while left_index < len(left) and right_index < len(right):
-        if left[left_index] < right[right_index]:
-            merged.append(left[left_index])
-            left_index += 1
+    while l < len(left) and r < len(right):
+        if left[l] < right[r]:
+            merged.append(left[l])
+            l += 1
         else:
-            merged.append(right[right_index])
-            right_index += 1
+            merged.append(right[r])
+            r += 1
 
-    while left_index < len(left):
-        merged.append(left[left_index])
-        left_index += 1
+    while l < len(left):
+        merged.append(left[l])
+        l += 1
 
-    while right_index < len(right):
-        merged.append(right[right_index])
-        right_index += 1
+    while r < len(right):
+        merged.append(right[r])
+        r += 1
 
     return merged
 
