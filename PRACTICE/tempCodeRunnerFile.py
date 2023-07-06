@@ -1,3 +1,2 @@
-a="calculate 3 / 10"
-x=a.split()
-print(x[2])
+p=5,2,4,6,2,4
+print(map(p))

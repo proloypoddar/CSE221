@@ -1,35 +1,46 @@
-def marge(x):
-    if len(x)<=1:
-        return x
-    mid=len(x)//2
-    array_1=x[:mid]
-    array_2=x[mid:]
-    marge(array_1)
-    marge(array_2)
-    i=j=k=0
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
 
-    while i<len(array_1) and j<len(array_2):
-        if array_1[i]<array_2[j]:
-            x[k]=array_1[i]
-            i+=1
+    mid = len(arr) // 2
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+
+    return merge(left_half, right_half)
+
+
+def merge(left, right):
+    merged = []
+    left_index = 0
+    right_index = 0
+
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            merged.append(left[left_index])
+            left_index += 1
         else:
-            x[k]=array_2[j]
-            j+=1
-        k+=1
-    while i< len(array_1):
-        x[k]=array_1[i]
-        k+=1
-        i+=1
-    while j<len(array_2):
-        x[k]=array_2[j]
-        k+=1
-        j+=1
-    return x
-x=[]
-i=int(input())
-for i in range(0,i):
-    i=int(input())
-    x.append(i)
+            merged.append(right[right_index])
+            right_index += 1
 
-print(marge(x))
+    while left_index < len(left):
+        merged.append(left[left_index])
+        left_index += 1
 
+    while right_index < len(right):
+        merged.append(right[right_index])
+        right_index += 1
+
+    return merged
+
+file = open("F:\CSE221\LAB\LAB2\input_task3.txt", "r")
+N=file.readline()
+line = file.readline()
+array = list(map(int, line.split()))
+file.close()
+sorted_array = merge_sort(array)
+w = open("F:\CSE221\LAB\LAB2\output_task3.txt", "w")
+w.write(" ".join(map(str, sorted_array)))
+w.close()
