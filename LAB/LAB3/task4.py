@@ -1,8 +1,8 @@
 def partition(arr, low, high):
-    pivot = arr[high]
+    p = arr[high]
     i = low - 1
     for j in range(low, high):
-        if arr[j] <= pivot:
+        if arr[j] <= p:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
@@ -12,14 +12,14 @@ def quick_select(arr, low, high, k):
     if low == high:
         return arr[low]
 
-    pivot_idx = partition(arr, low, high)
+    p_idx = partition(arr, low, high)
 
-    if pivot_idx == k - 1:
-        return arr[pivot_idx]
-    elif pivot_idx > k - 1:
-        return quick_select(arr, low, pivot_idx - 1, k)
+    if p_idx == k - 1:
+        return arr[p_idx]
+    elif p_idx > k - 1:
+        return quick_select(arr, low, p_idx - 1, k)
     else:
-        return quick_select(arr, pivot_idx + 1, high, k)
+        return quick_select(arr, p_idx + 1, high, k)
 
 input_file = open("F:/CSE221/LAB/LAB3/input_task4.txt", "r")
 output_file = open("F:/CSE221/LAB/LAB3/output_task4.txt", "w")
