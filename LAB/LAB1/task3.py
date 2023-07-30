@@ -7,7 +7,7 @@ students = []
 for i in range(N):
     student = (ids[i], marks[i])
     students.append(student)
-for i in range(N-1):
+for i in range(N-1):   
     for j in range(N-i-1):
         if students[j][1] < students[j+1][1] or (students[j][1] == students[j+1][1] and students[j][0] > students[j+1][0]):
             students[j], students[j+1] = students[j+1], students[j]

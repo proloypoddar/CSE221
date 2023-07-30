@@ -29,7 +29,7 @@ line = input_file.readline().strip()
 arr = [int(x) for x in line.split()]
 Q = int(input_file.readline().strip())
 
-for _ in range(Q):
+for i in range(Q):
     K = int(input_file.readline().strip())
     result = quick_select(arr, 0, N - 1, K)
     output_file.write(str(result) + "\n")
