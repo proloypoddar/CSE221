@@ -1,26 +1,13 @@
-def create_adjacency_matrix(n, m, edges):
-    matrix = [[0] * n for _ in range(n)]
 
-    for edge in edges:
-        u, v, w = edge
-        matrix[u - 1][v - 1] = w 
-
+def matrix(N, M, edges):
+    matrix = [[0] * (N + 1) for _ in range(N + 1)]
+    for u, v, w in edges:
+        matrix[u][v] = w
     return matrix
-
-def print_adjacency_matrix(matrix):
-    for row in matrix:
-        for cell in row:
-            print(cell, end=" ")
-        print()
-
-def main():
-    N, M = map(int, input().split())
-    edges = []
-    for _ in range(M):
-        u, v, w = map(int, input().split())
-        edges.append((u, v, w))
-
-    adjacency_matrix = create_adjacency_matrix(N, M, edges)
-    print_adjacency_matrix(adjacency_matrix)
-
-main()
+with open('F:\CSE221\LAB\LAB4\input_task1_a.txt', 'r') as file:
+    N, M = map(int, file.readline().split())
+    edges = [tuple(map(int, file.readline().split())) for _ in range(M)]
+adj = matrix(N, M, edges)
+with open('F:\CSE221\LAB\LAB4\output_task1_a.txt', 'w') as file:
+    for i in adj[1:]: 
+        file.write(" ".join(map(str, i[1:])) + "\n")
