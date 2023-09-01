@@ -1,37 +1,40 @@
-def find(parent, node):
-    if parent[node] == node:
-        return node
-    parent[node] = find(parent, parent[node])
-    return parent[node]
-def union(parent, rank, x, y):
-    x_root = find(parent, x)
-    y_root = find(parent, y)
-    if rank[x_root] < rank[y_root]:
-        parent[x_root] = y_root
-    elif rank[x_root] > rank[y_root]:
-        parent[y_root] = x_root
+def find(prnt, i):
+    if prnt[i] == i:
+        return i
+    return find(prnt, prnt[i])
+def union(prnt, rank, u, v):
+    u = find(prnt, u)
+    v = find(prnt, v)
+    if rank[u] < rank[v]:
+        prnt[u] = v
+    elif rank[u] > rank[v]:
+        prnt[v] = u
     else:
-        parent[y_root] = x_root
-        rank[x_root] += 1
-def kruskal(edges, N):
-    parent = [i for i in range(N + 1)]
+        prnt[v] = u
+        rank[u] += 1
+def minimum_cost(N, path):
+    path.sort(key=lambda x: x[2])
+    
+    prnt = list(range(N + 1))
     rank = [0] * (N + 1)
-    edges.sort(key=lambda edge: edge[2])
-    total_cost = 0
-    for edge in edges:
-        u, v, w = edge
-        u_root = find(parent, u)
-        v_root = find(parent, v)
+    min_cost = 0
+    
+    for i in path:
+        u, v, w = i
+        u = find(prnt, u)
+        v = find(prnt, v)
+        
+        if u != v:
+            min_cost += w
+            union(prnt, rank, u, v)
+    return min_cost
+with open("F:\CSE221\LAB\LAB8\input_task1.txt", "r") as file:
+    N, M = map(int, file.readline().split())
+    path = []
+    for _ in range(M):
+        u, v, w = map(int, file.readline().split())
+        path.append((u, v, w))
+result = minimum_cost(N, path)
 
-        if u_root != v_root:
-            union(parent, rank, u_root, v_root)
-        else:
-            total_cost += w
-    return total_cost
-N, M = map(int, input().split())
-edges = []
-for _ in range(M):
-    u, v, w = map(int, input().split())
-    edges.append((u, v, w))
-total_maintenance_cost = kruskal(edges, N)
-print(total_maintenance_cost)
+with open("F:\CSE221\LAB\LAB8\output_task1.txt", "w") as file:
+    file.write(str(result))
